@@ -108,6 +108,8 @@ in
     options = "--delete-older-than 14d"; # 2 weeks
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # 1 cpu -> 4 cores -> 8 cores (with hyperthreading)
+  nix.settings.max-jobs = 8;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

@@ -63,7 +63,7 @@
   nixpkgs.config.allowUnfree = true;
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscodium-fhs;
     userSettings = {
       # This is literally just JSON but with equal signs
       "nix.enableLanguageServer" = true;
@@ -87,6 +87,7 @@
       ];
       "editor.fontFamily" = "'Fira Code'";
       "editor.fontLigatures" = true;
+      "stylua.styluaPath" = "${pkgs.stylua}/bin/stylua";
     };
     extensions = with pkgs.vscode-extensions;
       [
