@@ -3,12 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let ext = import (builtins.fetchGit {
-  url = "https://github.com/nix-community/nix-vscode-extensions";
-  ref = "refs/heads/master";
-  rev = "a1980daf16eb0d8acfb6e17953d3945bfdac9a4d";
-});
-in
+
 {
   imports =
     [
@@ -109,7 +104,7 @@ in
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # 1 cpu -> 4 cores -> 8 cores (with hyperthreading)
-  nix.settings.max-jobs = 8;
+  nix.settings.max-jobs = 16;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
