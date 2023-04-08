@@ -85,6 +85,7 @@
       "robloxLsp.workspace.library" = [
         ./types.lua
       ];
+      "robloxLsp.diagnostics.globals" = [ "owner" "NS" "NLS" ];
       "editor.fontFamily" = "'Fira Code'";
       "editor.fontLigatures" = true;
       "stylua.styluaPath" = "${pkgs.stylua}/bin/stylua";
