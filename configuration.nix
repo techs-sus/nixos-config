@@ -11,22 +11,22 @@ let ext = import (builtins.fetchGit {
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # <home-manager/nixos>
     ];
 
-  # Use the systemd-boot EFI boot loader. (don't)
-  # boot.loader.systemd-boot.enable = true;
+  # Enable grub because systemd-boot doesn't work on lustrate
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
-#boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -41,7 +41,7 @@ in
     font = "Lat2-Terminus16";
     #keyMap = "us";
     useXkbConfig = true; # use xkbOptions in tty.
-   };
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -141,4 +141,3 @@ in
   system.stateVersion = "23.05"; # Did you read the comment?
   users.users.root.initialHashedPassword = "";
 }
-

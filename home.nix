@@ -17,7 +17,13 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [ firefox keepassxc discord rnix-lsp ];
+  home.packages = with pkgs; [
+    firefox
+    keepassxc
+    discord
+    rnix-lsp
+    stylua
+  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -45,7 +51,7 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
@@ -58,12 +64,40 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
-    ] ++ [
-      nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.johnnymorganz.stylua
-      nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.nightrains.robloxlsp
-      nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jnoortheen.nix-ide
-    ];
+    userSettings = {
+      # This is literally just JSON but with equal signs
+      "nix.enableLanguageServer" = true;
+      "workbench.colorTheme" = "Dracula";
+      "workbench.iconTheme" = "eq-material-theme-icons-palenight";
+      "editor.insertSpaces" = false;
+      "editor.tabSize" = 2;
+      "files.autoSave" = "onFocusChange";
+      "editor.formatOnSave" = true;
+      "editor.formatOnPaste" = true;
+      "editor.cursorStyle" = "block";
+      "editor.cursorBlinking" = "solid";
+      "editor.multiCursorLimit" = 1000;
+      "robloxLsp.completion.callParenthesess" = true;
+      "robloxLsp.diagnostics.workspaceRate" = 50;
+      "robloxLsp.hint.enable" = true;
+      "robloxLsp.misc.serverPort" = 0;
+      "robloxLsp.typeChecking.mode" = "Non Strict";
+      "robloxLsp.workspace.library" = [
+        ./others/types.lua
+      ];
+      "editor.fontFamily" = "'Fira Code'";
+      "editor.fontLigatures" = true;
+    };
+    extensions = with pkgs.vscode-extensions;
+      [
+        dracula-theme.theme-dracula
+      ] ++ [
+        nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.johnnymorganz.stylua
+        nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.nightrains.robloxlsp
+        nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jnoortheen.nix-ide
+        nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.equinusocio.vsc-material-theme-icons
+        nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.rust-lang.rust-analyzer
+        nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.usernamehw.errorlens
+      ];
   };
 }
