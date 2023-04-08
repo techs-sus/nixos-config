@@ -58,9 +58,14 @@
   programs.home-manager.enable = true;
   programs.fish.enable = true;
   programs.fish.plugins = [
+    # I need tide to automatically install itself lol
     { name = "tide"; src = pkgs.fishPlugins.tide.src; }
   ];
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # NOTE: When editing settings in VSCode, you will not be able to save the settings.json file.
+  # This is due to file being read-only, because home-manager will create it and fill it in.
+  # Please DO NOT write to the file directly, and instead modify userSettings in programs.vscode instead.
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium-fhs;
@@ -83,6 +88,7 @@
       "robloxLsp.misc.serverPort" = 0;
       "robloxLsp.typeChecking.mode" = "Non Strict";
       "robloxLsp.workspace.library" = [
+        # This resolves to a Nix store path.
         ./types.lua
       ];
       "robloxLsp.diagnostics.globals" = [ "owner" "NS" "NLS" ];
@@ -95,6 +101,8 @@
       [
         dracula-theme.theme-dracula
       ] ++ [
+        # I don't know if you can add extensions through VSCode itself anymore.
+        # Although you probably shouldn't do that anyway.
         nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.johnnymorganz.stylua
         nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.nightrains.robloxlsp
         nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jnoortheen.nix-ide
