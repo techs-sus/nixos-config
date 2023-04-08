@@ -86,9 +86,10 @@
         ./types.lua
       ];
       "robloxLsp.diagnostics.globals" = [ "owner" "NS" "NLS" ];
-      "editor.fontFamily" = "'Fira Code'";
+      "editor.fontFamily" = "'FiraCode Nerd Font'";
       "editor.fontLigatures" = true;
       "stylua.styluaPath" = "${pkgs.stylua}/bin/stylua";
+      "git.autofetch" = true;
     };
     extensions = with pkgs.vscode-extensions;
       [
