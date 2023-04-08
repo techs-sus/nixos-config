@@ -83,7 +83,7 @@
       "robloxLsp.misc.serverPort" = 0;
       "robloxLsp.typeChecking.mode" = "Non Strict";
       "robloxLsp.workspace.library" = [
-        ./others/types.lua
+        "${types.lua}"
       ];
       "editor.fontFamily" = "'Fira Code'";
       "editor.fontLigatures" = true;
