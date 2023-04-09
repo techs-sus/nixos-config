@@ -140,7 +140,7 @@
       "editor.cursorBlinking" = "solid";
       "editor.multiCursorLimit" = 1000;
       "robloxLsp.completion.callParenthesess" = true;
-      "robloxLsp.diagnostics.workspaceRate" = 50;
+      "robloxLsp.diagnostics.workspaceRate" = 100;
       "robloxLsp.hint.enable" = true;
       "robloxLsp.misc.serverPort" = 0;
       "robloxLsp.typeChecking.mode" = "Non Strict";
