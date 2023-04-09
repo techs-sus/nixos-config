@@ -79,7 +79,7 @@
       "files.autoSave" = "onFocusChange";
       "editor.formatOnSave" = true;
       "editor.formatOnPaste" = true;
-      "editor.cursorStyle" = "block";
+      "editor.cursorStyle" = "line";
       "editor.cursorBlinking" = "solid";
       "editor.multiCursorLimit" = 1000;
       "robloxLsp.completion.callParenthesess" = true;
