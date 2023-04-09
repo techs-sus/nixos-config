@@ -53,7 +53,7 @@
   services.xserver.enable = true;
   # Enable desktop stuff
   hardware.enableRedistributableFirmware = true;
-  services.xserver.videoDrivers = [ "amdgpu" "radeon" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
