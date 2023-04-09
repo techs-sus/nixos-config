@@ -106,7 +106,6 @@
   # needed for grapejuice
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = [ pkgs.amdvlk ];
   # GC
   system.autoUpgrade = {
     enable = true;
