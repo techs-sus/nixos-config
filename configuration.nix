@@ -37,27 +37,44 @@
     #keyMap = "us";
     useXkbConfig = true; # use xkbOptions in tty.
   };
+  # AMDGPU support + Vulkan
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [
+    "radeon.si_support=0"
+    "amdgpu.si_support=1"
 
+    "radeon.cik_support=0"
+    "amdgpu.cik_support=1"
+  ];
+  hardware.opengl.extraPackages = with pkgs; [
+    amdvlk
+  ];
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   # Enable desktop stuff
   hardware.enableRedistributableFirmware = true;
-  services.xserver.videoDrivers = [ "radeon" ];
+  services.xserver.videoDrivers = [ "amdgpu" "radeon" ];
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   # AMDGPU
   # Configure keymap in X11
   services.xserver.layout = "us";
-  services.xserver.xkbOptions = "delete:comma";
+  services.xserver.xkbOptions = "";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  #sound.enable = true;
   sound.mediaKeys.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.enable32Bit = true;
+    pulse.enable = true;
+  };
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
@@ -69,7 +86,7 @@
   users.users.tech.isNormalUser = true;
   users.users.tech.initialPassword = "password";
   # wheel is sudo permissions
-  users.users.tech.extraGroups = [ "wheel" ];
+  users.users.tech.extraGroups = [ "wheel" "audio" ];
   users.users.tech.shell = pkgs.fish;
   programs.fish.enable = true;
   programs.gamemode.enable = true;
@@ -96,11 +113,12 @@
     channel = "https://nixos.org/channels/nixos-unstable";
   };
 
+  # Nix configuration
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 14d"; # 2 weeks
+    options = "--delete-older-than 7d"; # 1 week
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # 1 cpu -> 4 cores -> 8 cores (with hyperthreading)
