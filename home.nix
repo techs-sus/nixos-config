@@ -38,63 +38,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".config/brinkervii/grapejuice/user_settings.json".text = ''
-      {
-        "version": 3,
-        "hardware_profile": {
-          "graphics_id": "9d3583c0490362c7a84c0e23e0980ff1e63602c6a9f6dcf54f9c503cb7ae939e",
-          "gpu_vendor_id": 1,
-          "gpu_pci_id": "00:01.0",
-          "gpu_can_do_vulkan": false,
-          "provider_index": 0,
-          "provider_name": "MULLINS @ pci:0000:00:01.0",
-          "should_prime": false,
-          "use_mesa_gl_override": false,
-          "preferred_roblox_renderer_string": "OpenGL",
-          "is_multi_gpu": false,
-          "version": 2
-        },
-        "show_fast_flag_warning": false,
-        "release_channel": "master",
-        "disable_updates": false,
-        "try_profiling_hardware": true,
-        "default_wine_home": "/nix/store/y77yylvs2j2knvid9h807yhysh3g4nk2-wine-wow-8.5",
-        "wineprefixes": [
-          {
-            "id": "b5e971c6-fc33-4ddf-8863-a6433d4680b1",
-            "priority": 0,
-            "name_on_disk": "player",
-            "display_name": "Player",
-            "wine_home": "",
-            "dll_overrides": "dxdiagn=;winemenubuilder.exe=",
-            "prime_offload_sink": -1,
-            "use_mesa_gl_override": false,
-            "enable_winedebug": false,
-            "winedebug_string": "",
-            "roblox_renderer": "Vulkan",
-            "env": {
-              "LD_PRELOAD": "libgamemodeauto.so"
-            },
-            "hints": [
-              "player",
-              "app"
-            ],
-            "fast_flags": {},
-            "third_party": {
-              "fps_unlocker": true,
-              "dxvk": false
-            },
-            "dxvk_overrides": [
-              "d3d11",
-              "d3d9",
-              "dxgi",
-              "d3d10core"
-            ]
-          }
-        ],
-        "unsupported_settings": {}
-      }
-    '';
   };
 
   # You can also manage environment variables but you will have to manually
