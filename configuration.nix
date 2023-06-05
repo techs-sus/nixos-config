@@ -56,7 +56,8 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
   # AMDGPU
   # Configure keymap in X11
   services.xserver.layout = "us";
