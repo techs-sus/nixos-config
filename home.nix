@@ -23,6 +23,7 @@
     discord
     rnix-lsp
     stylua
+    python3Full
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
