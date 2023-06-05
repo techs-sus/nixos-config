@@ -106,6 +106,7 @@
     gh
     gamescope
     wl-clipboard
+    htop
   ];
   # needed for grapejuice
   hardware.opengl.driSupport = true;
