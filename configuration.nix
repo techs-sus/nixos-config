@@ -17,12 +17,14 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   # boot.loader.efi.canTouchEfiVariables = true;
-
+  virtualisation.waydroid.enable = true;
+  virtualisation.lxd.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  sys.use_memfd = true;
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -103,6 +105,7 @@
     git
     gh
     gamescope
+    wl-clipboard
   ];
   # needed for grapejuice
   hardware.opengl.driSupport = true;
